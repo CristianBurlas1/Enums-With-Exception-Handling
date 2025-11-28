@@ -1,0 +1,36 @@
+package EnumsWithExceptionHandlng;
+import javax.swing.JOptionPane;
+public class CurrencyConverter {
+
+
+	    enum Currency {
+	        USD(57.00), EUR(62.00), JPY(0.38);
+	        double rate;
+	        Currency(double rate) { this.rate = rate; }
+	    }
+
+	    public static void main(String[] args) {
+
+	        try {
+	            double amount = Double.parseDouble(
+	                    JOptionPane.showInputDialog("Enter amount:")
+	            );
+
+	            String input = JOptionPane.showInputDialog(
+	                    "Enter currency (USD/EUR/JPY):"
+	            ).trim().toUpperCase();
+
+	            Currency curr = Currency.valueOf(input);
+
+	            double php = amount * curr.rate;
+
+	            JOptionPane.showMessageDialog(null,
+	                    "Amount in PHP: P" + String.format("%.2f", php));
+
+	        } catch (IllegalArgumentException e) {
+	            JOptionPane.showMessageDialog(null, "Error: Invalid currency!");
+	        } catch (Exception e) {
+	            JOptionPane.showMessageDialog(null, "Error: Invalid input!");
+	        }
+	    }
+	}
