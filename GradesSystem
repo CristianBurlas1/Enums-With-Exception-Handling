@@ -1,0 +1,29 @@
+package EnumsWithExceptionHandlng;
+import javax.swing.JOptionPane;
+public class GradeSystem {
+
+
+	    enum GradeRatingEnum { EXCELLENT, VERY_GOOD, GOOD, FAIR, POOR }
+
+	    public static void main(String[] args) {
+
+	        try {
+	            int grade = Integer.parseInt(
+	                    JOptionPane.showInputDialog("Enter grade (0-100):")
+	            );
+
+	            GradeRatingEnum rating;
+
+	            if (grade >= 90) rating = GradeRatingEnum.EXCELLENT;
+	            else if (grade >= 80) rating = GradeRatingEnum.VERY_GOOD;
+	            else if (grade >= 70) rating = GradeRatingEnum.GOOD;
+	            else if (grade >= 60) rating = GradeRatingEnum.FAIR;
+	            else rating = GradeRatingEnum.POOR;
+
+	            JOptionPane.showMessageDialog(null, "Your rating: " + rating);
+
+	        } catch (Exception e) {
+	            JOptionPane.showMessageDialog(null, "Error: Invalid input!");
+	        }
+	    }
+	}
