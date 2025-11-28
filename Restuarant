@@ -1,0 +1,39 @@
+package EnumsWithExceptionHandlng;
+import javax.swing.JOptionPane;
+public class RestuarantOrder {
+
+	enum Menu {
+		BURGER(80), FRIES(50), DRINK(30);
+		int price;
+		Menu(int price) { this.price = price; }
+	}
+	
+	public static void main(String[] args) {
+		
+		try {
+			String menu = "Menu\n1 - BURGER\n2 - FRIES\n3 - DRINK";
+			int choice = Integer.parseInt(JOptionPane.showInputDialog(menu +"\nEnter your choice"));
+			
+			Menu Order;
+			
+			switch (choice) {
+			case 1: Order = Menu.BURGER;
+				break;
+				
+			case 2: Order = Menu.FRIES;
+				break;
+				
+			case 3: Order = Menu.DRINK;
+				break;
+				default: throw new Exception("Invalid menu choice!");
+			}
+			
+			JOptionPane.showMessageDialog(null, "You ordered:" + Order + "\nPrice: P" + Order.price);
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error: " +e.getMessage());
+		}
+
+	}
+
+}
