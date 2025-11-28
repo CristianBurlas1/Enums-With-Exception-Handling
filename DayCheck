@@ -1,0 +1,23 @@
+package EnumsWithExceptionHandlng;
+import javax.swing.JOptionPane;
+public class DayCheck {
+
+		enum DayType { WEEKDAY, WEEKEND }
+		
+		public static void main(String[] args) {
+			
+			try {
+				String day = JOptionPane.showInputDialog("Enter a day")
+											.trim().toLowerCase();
+				
+				DayType type = (day.equals("saturday") || day.equals("sunday"))
+						? DayType.WEEKEND
+						: DayType.WEEKDAY;
+				
+				JOptionPane.showConfirmDialog(null, "Day Type: " + type);
+				
+			}catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Error: Invalid Input!");
+			}
+		}
+}
