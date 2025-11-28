@@ -1,0 +1,27 @@
+package EnumsWithExceptionHandlng;
+import javax.swing.JOptionPane;
+public class TrafficLight {
+
+
+	    enum Traffic {
+	        RED("STOP"), YELLOW("READY"), GREEN("GO");
+	        String action;
+	        Traffic(String action) { this.action = action; }
+	    }
+
+	    public static void main(String[] args) {
+
+	        try {
+	            String input = JOptionPane.showInputDialog(
+	                    "Enter traffic light color (Red/Yellow/Green):"
+	            ).trim().toUpperCase();
+
+	            Traffic light = Traffic.valueOf(input);
+
+	            JOptionPane.showMessageDialog(null, "Action: " + light.action);
+
+	        } catch (IllegalArgumentException e) {
+	            JOptionPane.showMessageDialog(null, "Error: Invalid color!");
+	        }
+	    }
+	}
